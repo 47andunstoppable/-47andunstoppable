@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>47ANDUNSTOPPABLE</title>
+
+<style>
+body {
+  background: #000;
+  color: #fff;
+  font-family: Arial;
+  margin: 0;
+}
+
+.app {
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+header {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff7a00;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+nav button {
+  flex: 1;
+  background: #1a1a1a;
+  color: #ff7a00;
+  border: 1px solid #ff7a00;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+nav button:hover {
+  background: #ff7a00;
+  color: #000;
+}
+
+.page {
+  display: none;
+  animation: slide 0.4s ease;
+}
+
+@keyframes slide {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.page.active {
+  display: block;
+}
+
+h2 {
+  color: #ff7a00;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 6px;
+}
+
+.save {
+  width: 100%;
+  padding: 14px;
+  background: #ff7a00;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.save:hover {
+  background: #ffa64d;
+}
+
+.bar {
+  width: 100%;
+  height: 22px;
+  background: #333;
+  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #ff7a00;
+  transition: width 0.6s ease;
+}
+</style>
+
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <span class="logo">🔥</span>
+    47ANDUNSTOPPABLE
+  </header>
+
+  <nav>
+    <button onclick="showPage('training')">🏃 Training</button>
+    <button onclick="showPage('body')">💪 Körper</button>
+    <button onclick="showPage('food')">🍽️ Ernährung</button>
+    <button onclick="showPage('social')">📱 Social</button>
+    <button onclick="showPage('progress')">📍 850 km</button>
+  </nav>
+
+  <section id="training" class="page active">
+    <h2>🏃 Training</h2>
+    <input placeholder="Distanz (km)">
+    <input placeholder="Zeit">
+    <input placeholder="Pace">
+    <input placeholder="Durchschnittspuls">
+    <input placeholder="Max Puls">
+    <input placeholder="Schlaf (h)">
+    <button class="save">Speichern</button>
+  </section>
+
+  <section id="body" class="page">
+    <h2>💪 Körperdaten</h2>
+    <input placeholder="Gewicht (kg)">
+    <input placeholder="Körperfett (%)">
+    <input placeholder="Wasser (%)">
+    <input placeholder="Muskelmasse (kg)">
+    <button class="save">Speichern</button>
+  </section>
+
+  <section id="food" class="page">
+    <h2>🍽️ Ernährung</h2>
+    <input placeholder="Kalorien">
+    <input placeholder="Protein (g)">
+    <input placeholder="Kohlenhydrate (g)">
+    <input placeholder="Fett (g)">
+    <button class="save">Speichern</button>
+  </section>
+
+  <section id="social" class="page">
+    <h2>📱 Social Media</h2>
+    <input placeholder="TikTok Follower">
+    <input placeholder="Instagram Follower">
+    <input placeholder="Views heute">
+    <input placeholder="Likes heute">
+    <button class="save">Speichern</button>
+  </section>
+
+  <section id="progress" class="page">
+    <h2>📍 850 km Fortschritt</h2>
+    <input id="km" placeholder="Gesamt km">
+    <div class="bar"><div id="bar-fill"></div></div>
+    <button class="save" onclick="updateBar()">Aktualisieren</button>
+  </section>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function updateBar() {
+  let km = document.getElementById("km").value;
+  let percent = (km / 850) * 100;
+  document.getElementById("bar-fill").style.width = percent + "%";
+}
+</script>
+
+</body>
+</html>
