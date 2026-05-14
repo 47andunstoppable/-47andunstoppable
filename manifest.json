@@ -1,0 +1,15 @@
+{
+  "name": "47ANDUNSTOPPABLE",
+  "short_name": "47RUN",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ff7a00",
+  "icons": [
+    {
+      "src": "Copilot_20260514_210129.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
